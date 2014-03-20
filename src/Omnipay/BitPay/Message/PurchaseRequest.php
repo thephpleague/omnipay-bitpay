@@ -175,7 +175,7 @@ class PurchaseRequest extends AbstractRequest
     {
         $this->validate('amount', 'currency');
 
-        $data = [
+        $data = array(
             'price' => $this->getAmount(),
             'currency' => $this->getCurrency(),
             'posData' => $this->getTransactionId(),
@@ -197,7 +197,7 @@ class PurchaseRequest extends AbstractRequest
             'buyerCountry' => $this->getBuyerCountry(),
             'buyerEmail' => $this->getBuyerEmail(),
             'buyerPhone' => $this->getBuyerPhone(),
-        ];
+        );
 
         return $data;
     }
