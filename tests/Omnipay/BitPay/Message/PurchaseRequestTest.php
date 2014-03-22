@@ -6,6 +6,11 @@ use Omnipay\Tests\TestCase;
 
 class PurchaseRequestTest extends TestCase
 {
+    /**
+     * @var \Omnipay\BitPay\Message\PurchaseRequest
+     */
+    private $request;
+
     public function setUp()
     {
         $this->request = new PurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
@@ -17,6 +22,24 @@ class PurchaseRequestTest extends TestCase
                 'description' => 'thing',
                 'notifyUrl' => 'https://www.example.com/notify',
                 'returnUrl' => 'https://www.example.com/return',
+                'notifyEmail' => 'merchant@example.com',
+                'fullNotifications' => false,
+                'transactionSpeed' => 'medium',
+                'orderId' => '5',
+                'itemCode' => '123-11-123',
+                'physical' => false,
+                'card' => array(
+                    'firstName' => 'John',
+                    'lastName' => 'Doe',
+                    'email' => 'buyer@example.com',
+                    'billingAddress1' => 'Address Line 1',
+                    'billingAddress2' => 'Address Line 2',
+                    'billingCity' => 'Bitcoin City',
+                    'billingState' => 'Bitcoinaho',
+                    'billingPostcode' => 'SAMPLE-ZIP',
+                    'billingCountry' => 'Bitcoin Islands',
+                    'billingPhone' => '00-00000000',
+                ),
             )
         );
     }
@@ -31,6 +54,21 @@ class PurchaseRequestTest extends TestCase
         $this->assertSame('thing', $data['itemDesc']);
         $this->assertSame('https://www.example.com/notify', $data['notificationURL']);
         $this->assertSame('https://www.example.com/return', $data['redirectURL']);
+        $this->assertSame('merchant@example.com', $data['notificationEmail']);
+        $this->assertFalse($data['fullNotifications']);
+        $this->assertSame('medium', $data['transactionSpeed']);
+        $this->assertSame('5', $data['orderID']);
+        $this->assertSame('123-11-123', $data['itemCode']);
+        $this->assertFalse($data['physical']);
+        $this->assertSame('John Doe', $data['buyerName']);
+        $this->assertSame('Address Line 1', $data['buyerAddress1']);
+        $this->assertSame('Address Line 2', $data['buyerAddress2']);
+        $this->assertSame('Bitcoin City', $data['buyerCity']);
+        $this->assertSame('Bitcoinaho', $data['buyerState']);
+        $this->assertSame('SAMPLE-ZIP', $data['buyerZip']);
+        $this->assertSame('Bitcoin Islands', $data['buyerCountry']);
+        $this->assertSame('buyer@example.com', $data['buyerEmail']);
+        $this->assertSame('00-00000000', $data['buyerPhone']);
     }
 
     public function testSend()
