@@ -6,6 +6,11 @@ use Omnipay\Tests\TestCase;
 
 class PurchaseRequestTest extends TestCase
 {
+    /**
+     * @var \Omnipay\BitPay\Message\PurchaseRequest
+     */
+    private $request;
+
     public function setUp()
     {
         $this->request = new PurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
@@ -23,15 +28,18 @@ class PurchaseRequestTest extends TestCase
                 'orderId' => '5',
                 'itemCode' => '123-11-123',
                 'physical' => false,
-                'buyerName' => 'John Doe',
-                'buyerAddress1' => 'Address Line 1',
-                'buyerAddress2' => 'Address Line 2',
-                'buyerCity' => 'Bitcoin City',
-                'buyerState' => 'Bitcoinaho',
-                'buyerZip' => 'SAMPLE-ZIP',
-                'buyerCountry' => 'Bitcoin Islands',
-                'buyerEmail' => 'buyer@example.com',
-                'buyerPhone' => '00-00000000',
+                'card' => array(
+                    'firstName' => 'John',
+                    'lastName' => 'Doe',
+                    'email' => 'buyer@example.com',
+                    'billingAddress1' => 'Address Line 1',
+                    'billingAddress2' => 'Address Line 2',
+                    'billingCity' => 'Bitcoin City',
+                    'billingState' => 'Bitcoinaho',
+                    'billingPostcode' => 'SAMPLE-ZIP',
+                    'billingCountry' => 'Bitcoin Islands',
+                    'billingPhone' => '00-00000000',
+                ),
             )
         );
     }

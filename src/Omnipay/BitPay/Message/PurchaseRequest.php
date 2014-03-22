@@ -81,123 +81,32 @@ class PurchaseRequest extends AbstractRequest
         return $this->setParameter('physical', $value);
     }
 
-    public function getBuyerName()
-    {
-        return $this->getParameter('buyerName');
-    }
-
-    public function setBuyerName($value)
-    {
-        return $this->setParameter('buyerName', $value);
-    }
-
-    public function getBuyerAddress1()
-    {
-        return $this->getParameter('buyerAddress1');
-    }
-
-    public function setBuyerAddress1($value)
-    {
-        return $this->setParameter('buyerAddress1', $value);
-    }
-
-    public function getBuyerAddress2()
-    {
-        return $this->getParameter('buyerAddress2');
-    }
-
-    public function setBuyerAddress2($value)
-    {
-        return $this->setParameter('buyerAddress2', $value);
-    }
-
-    public function getBuyerCity()
-    {
-        return $this->getParameter('buyerCity');
-    }
-
-    public function setBuyerCity($value)
-    {
-        return $this->setParameter('buyerCity', $value);
-    }
-
-    public function getBuyerState()
-    {
-        return $this->getParameter('buyerState');
-    }
-
-    public function setBuyerState($value)
-    {
-        return $this->setParameter('buyerState', $value);
-    }
-
-    public function getBuyerZip()
-    {
-        return $this->getParameter('buyerZip');
-    }
-
-    public function setBuyerZip($value)
-    {
-        return $this->setParameter('buyerZip', $value);
-    }
-
-    public function getBuyerCountry()
-    {
-        return $this->getParameter('buyerCountry');
-    }
-
-    public function setBuyerCountry($value)
-    {
-        return $this->setParameter('buyerCountry', $value);
-    }
-
-    public function getBuyerEmail()
-    {
-        return $this->getParameter('buyerEmail');
-    }
-
-    public function setBuyerEmail($value)
-    {
-        return $this->setParameter('buyerEmail', $value);
-    }
-
-    public function getBuyerPhone()
-    {
-        return $this->getParameter('buyerPhone');
-    }
-
-    public function setBuyerPhone($value)
-    {
-        return $this->setParameter('buyerPhone', $value);
-    }
-
     public function getData()
     {
         $this->validate('amount', 'currency');
 
-        $data = array(
-            'price' => $this->getAmount(),
-            'currency' => $this->getCurrency(),
-            'posData' => $this->getTransactionId(),
-            'itemDesc' => $this->getDescription(),
-            'notificationURL' => $this->getNotifyUrl(),
-            'redirectURL' => $this->getReturnUrl(),
-            'notificationEmail' => $this->getNotifyEmail(),
-            'fullNotifications' => $this->getFullNotifications(),
-            'transactionSpeed' => $this->getTransactionSpeed(),
-            'orderID' => $this->getOrderId(),
-            'itemCode' => $this->getItemCode(),
-            'physical' => $this->getPhysical(),
-            'buyerName' => $this->getBuyerName(),
-            'buyerAddress1' => $this->getBuyerAddress1(),
-            'buyerAddress2' => $this->getBuyerAddress2(),
-            'buyerCity' => $this->getBuyerCity(),
-            'buyerState' => $this->getBuyerState(),
-            'buyerZip' => $this->getBuyerZip(),
-            'buyerCountry' => $this->getBuyerCountry(),
-            'buyerEmail' => $this->getBuyerEmail(),
-            'buyerPhone' => $this->getBuyerPhone(),
-        );
+        $data = array();
+        $data['price'] = $this->getAmount();
+        $data['currency'] = $this->getCurrency();
+        $data['posData'] = $this->getTransactionId();
+        $data['itemDesc'] = $this->getDescription();
+        $data['notificationURL'] = $this->getNotifyUrl();
+        $data['redirectURL'] = $this->getReturnUrl();
+        $data['notificationEmail'] = $this->getNotifyEmail();
+        $data['fullNotifications'] = $this->getFullNotifications();
+        $data['transactionSpeed'] = $this->getTransactionSpeed();
+        $data['orderID'] = $this->getOrderId();
+        $data['itemCode'] = $this->getItemCode();
+        $data['physical'] = $this->getPhysical();
+        $data['buyerName'] = $this->getCard()->getName();
+        $data['buyerAddress1'] = $this->getCard()->getAddress1();
+        $data['buyerAddress2'] = $this->getCard()->getAddress2();
+        $data['buyerCity'] = $this->getCard()->getCity();
+        $data['buyerState'] = $this->getCard()->getState();
+        $data['buyerZip'] = $this->getCard()->getBillingPostcode();
+        $data['buyerCountry'] = $this->getCard()->getCountry();
+        $data['buyerEmail'] = $this->getCard()->getEmail();
+        $data['buyerPhone'] = $this->getCard()->getPhone();
 
         return $data;
     }
