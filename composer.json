@@ -24,7 +24,7 @@
         }
     ],
     "autoload": {
-        "psr-0": { "Omnipay\\BitPay\\" : "src/" }
+        "psr-4": { "Omnipay\\BitPay\\" : "src/" }
     },
     "require": {
         "omnipay/common": "~2.0"
