@@ -2,7 +2,7 @@
 
 **BitPay driver for the Omnipay PHP payment processing library**
 
-[![Build Status](https://travis-ci.org/omnipay/bitpay.png?branch=master)](https://travis-ci.org/omnipay/bitpay)
+[![Build Status](https://travis-ci.org/thephpleague/omnipay-bitpay.png?branch=master)](https://travis-ci.org/thephpleague/omnipay-bitpay)
 [![Latest Stable Version](https://poser.pugx.org/omnipay/bitpay/version.png)](https://packagist.org/packages/omnipay/bitpay)
 [![Total Downloads](https://poser.pugx.org/omnipay/bitpay/d/total.png)](https://packagist.org/packages/omnipay/bitpay)
 
