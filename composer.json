@@ -1,5 +1,5 @@
 {
-    "name": "league/omnipay-bitpay",
+    "name": "omnipay/bitpay",
     "type": "library",
     "description": "BitPay driver for the Omnipay payment processing library",
     "keywords": [
